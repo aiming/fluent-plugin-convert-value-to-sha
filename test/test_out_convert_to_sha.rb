@@ -10,18 +10,21 @@ class ConvertToShaTest < Test::Unit::TestCase
     sha  256
     salt hoge
     key  uid
+    tag  moimoi
   ]
 
   CONFIG_384 = %[
     sha  384
     salt hoge
     key  uid
+    tag  yatta
   ]
 
   CONFIG_512 = %[
     sha  512
     salt hoge
     key  uid
+    tag  omatsuri
   ]
 
   def create_driver(conf = CONFIG, tag = 'test')
@@ -41,17 +44,17 @@ class ConvertToShaTest < Test::Unit::TestCase
 
     # uid is 10000
     p emits[0]
-    assert_equal "mako.mankanshoku", emits[0][0]
+    assert_equal "moimoi", emits[0][0]
     assert_equal Digest::SHA256.hexdigest("hoge10000"), emits[0][2]["uid"]
 
     # uid is 12345
     p emits[1]
-    assert_equal "mako.mankanshoku", emits[1][0]
+    assert_equal "moimoi", emits[1][0]
     assert_equal Digest::SHA256.hexdigest("hoge12345"), emits[1][2]["uid"]
 
     # uid is 33333
     p emits[2]
-    assert_equal "mako.mankanshoku", emits[2][0]
+    assert_equal "moimoi", emits[2][0]
     assert_equal Digest::SHA256.hexdigest("hoge33333"), emits[2][2]["uid"]
 
   end
@@ -69,17 +72,17 @@ class ConvertToShaTest < Test::Unit::TestCase
 
     # uid is 10000
     p emits[0]
-    assert_equal "mako.mankanshoku", emits[0][0]
+    assert_equal "yatta", emits[0][0]
     assert_equal Digest::SHA384.hexdigest("hoge10000"), emits[0][2]["uid"]
 
     # uid is 12345
     p emits[1]
-    assert_equal "mako.mankanshoku", emits[1][0]
+    assert_equal "yatta", emits[1][0]
     assert_equal Digest::SHA384.hexdigest("hoge12345"), emits[1][2]["uid"]
 
     # uid is 33333
     p emits[2]
-    assert_equal "mako.mankanshoku", emits[2][0]
+    assert_equal "yatta", emits[2][0]
     assert_equal Digest::SHA384.hexdigest("hoge33333"), emits[2][2]["uid"]
 
   end
@@ -97,17 +100,17 @@ class ConvertToShaTest < Test::Unit::TestCase
 
     # uid is 10000
     p emits[0]
-    assert_equal "mako.mankanshoku", emits[0][0]
+    assert_equal "omatsuri", emits[0][0]
     assert_equal Digest::SHA512.hexdigest("hoge10000"), emits[0][2]["uid"]
 
     # uid is 12345
     p emits[1]
-    assert_equal "mako.mankanshoku", emits[1][0]
+    assert_equal "omatsuri", emits[1][0]
     assert_equal Digest::SHA512.hexdigest("hoge12345"), emits[1][2]["uid"]
 
     # uid is 33333
     p emits[2]
-    assert_equal "mako.mankanshoku", emits[2][0]
+    assert_equal "omatsuri", emits[2][0]
     assert_equal Digest::SHA512.hexdigest("hoge33333"), emits[2][2]["uid"]
 
   end

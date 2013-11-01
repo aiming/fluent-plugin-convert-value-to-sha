@@ -15,6 +15,7 @@ class Fluent::ConvertToSha < Fluent::Output
   config_param :sha, :string, :default => '256'
   config_param :salt, :string, :default => 'mako'
   config_param :key, :string, :default => nil
+  config_param :tag, :string, :default => 'sha'
 
   def configure(conf)
     super
@@ -31,6 +32,10 @@ class Fluent::ConvertToSha < Fluent::Output
       raise Fluent::ConfigError, "require key name."
     end
 
+    if @tag.to_s.length == 0
+      raise Fluent::ConfigError, "require tag name."
+    end
+
     @mutex = Mutex.new
 
   end
@@ -45,7 +50,7 @@ class Fluent::ConvertToSha < Fluent::Output
 
   def emit(tag, es, chain)
     es.each do |time, record|
-      Fluent::Engine.emit(tag, time, convert_to_sha(record))
+      Fluent::Engine.emit(@tag, time, convert_to_sha(record))
     end
 
     chain.next
