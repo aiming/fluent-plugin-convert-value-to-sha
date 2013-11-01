@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fluent-plugin-convert-value-to-sha by aiming</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/aiming/fluent-plugin-convert-value-to-sha">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/aiming/fluent-plugin-convert-value-to-sha/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/aiming/fluent-plugin-convert-value-to-sha/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Fluent-plugin-convert-value-to-sha</h1>
+          <p>fluent-plugin-convert-value-to-sha</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/aiming">aiming</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="fluent-convert-value-to-sha-plugin" class="anchor" href="#fluent-convert-value-to-sha-plugin"><span class="octicon octicon-link"></span></a>fluent convert value to sha plugin.</h1>
+
+<p>This plugin is purpose value convert to sha256/384/512.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'fluent-plugin-convert-value-to-sha'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install fluent-plugin-convert-value-to-sha
+</code></pre>
+
+<h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<ul>
+<li>create fluentd config file</li>
+</ul><pre><code>&lt;source&gt;
+  type forward
+  port 24224
+&lt;/source&gt;
+
+&lt;match mako&gt;
+  type convert_to_sha
+  sha  256
+  salt uge
+  key  id
+&lt;/match&gt;
+
+&lt;match sha&gt;
+  type file
+  path ./test.log
+&lt;/match&gt;
+</code></pre>
+
+<ul>
+<li>send test data</li>
+</ul><pre><code>echo '{"id": "hoge"}' | fluent-cat mako
+</code></pre>
+
+<ul>
+<li>result (test.log)</li>
+</ul><pre><code>2013-11-01T20:38:20+09:00       sha     {"id":"cc6191550d712d0b506558ff7c6c0e2b6563e3f6f84a85d65ebf994bb0d23715"}
+</code></pre>
+
+<h2>
+<a name="copyright" class="anchor" href="#copyright"><span class="octicon octicon-link"></span></a>Copyright</h2>
+
+<p>Copyright (c) 2013 Aiming Inc.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
