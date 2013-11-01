@@ -1,6 +1,6 @@
-# Fluent::Plugin::Convert::Value::To::Sha
+# fluent convert value to sha plugin.
 
-TODO: Write a gem description
+This plugin is purpose value convert to sha256/384/512.
 
 ## Installation
 
@@ -16,17 +16,40 @@ Or install it yourself as:
 
     $ gem install fluent-plugin-convert-value-to-sha
 
-## Usage
+## How to use
 
-TODO: Write usage instructions here
+- create fluentd config file
 
-## Contributing
+```
+<source>
+  type forward
+  port 24224
+</source>
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+<match mako>
+  type convert_to_sha
+  sha  256
+  salt uge
+  key  id
+</match>
+
+<match sha>
+  type file
+  path ./test.log
+</match>
+```
+
+- send test data
+
+```
+echo '{"id": "hoge"}' | fluent-cat mako
+```
+
+- result (test.log)
+
+```
+2013-11-01T20:38:20+09:00       sha     {"id":"cc6191550d712d0b506558ff7c6c0e2b6563e3f6f84a85d65ebf994bb0d23715"}
+```
 
 ## Copyright
 
