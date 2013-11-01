@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["futoase@gmail.com"]
   spec.description   = %q{This plugin is convert value to sha.}
   spec.summary       = %q{fluentd convert value to sha plugin.}
-  spec.homepage      = ""
+  spec.homepage      = "http://aiming.github.io/fluent-plugin-convert-value-to-sha/"
   spec.license       = "Apache License v2.0"
 
   spec.files         = `git ls-files`.split($/)
