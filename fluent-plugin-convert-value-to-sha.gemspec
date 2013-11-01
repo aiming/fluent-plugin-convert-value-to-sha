@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-convert-value-to-sha"
-  spec.version       = "0.1.0"
+  spec.version       = "0.1.1"
   spec.authors       = ["Keiji Matsuzaki"]
   spec.email         = ["futoase@gmail.com"]
   spec.description   = %q{This plugin is convert value to sha.}
