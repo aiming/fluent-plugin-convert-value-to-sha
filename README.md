@@ -60,7 +60,7 @@ Copyright (c) 2013 Aiming Inc.
 
 ## License
 
-MIT.
+Apache License v2.0
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/aiming/fluent-plugin-convert-value-to-sha/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
