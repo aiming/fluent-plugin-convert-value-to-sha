@@ -1,4 +1,4 @@
-# fluent convert value to sha plugin.
+# [Fluentd](http://fluentd.org) convert value to sha plugin.
 
 [![Build Status](https://travis-ci.org/aiming/fluent-plugin-convert-value-to-sha.png?branch=master)](https://travis-ci.org/aiming/fluent-plugin-convert-value-to-sha)
 [![Gem Version](https://badge.fury.io/rb/fluent-plugin-convert-value-to-sha.png)](http://badge.fury.io/rb/fluent-plugin-convert-value-to-sha)
